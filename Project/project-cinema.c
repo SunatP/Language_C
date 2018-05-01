@@ -50,8 +50,8 @@ void search()
         count++;
     }
    printf("=================================================================================\n");
-    int asd;
-    char y;
+    int asd,enter;
+    char y,q;
     printf("What movie do you want to watch? ");
     scanf("%d",&asd);
 
@@ -61,7 +61,29 @@ void search()
         scanf("%s",&y);
         if(y=='Y'||y =='y'){
             printf("[%s]",Title[asd].title);
+
         }
+        if(y=='n' || y=='N')
+            {
+                printf("Return To Search And Select Again if press N program will go Main Menu? (Y/N):");
+                 scanf("%s",&q);
+                if(y=='Y'||y =='y')
+                {
+                 search();
+                }
+                else {
+                        while(1)
+                            {
+                                enter = fgetc(stdin);
+                    if(enter == 0x0A)
+                    {
+                        system("cls");
+                    fprintf(stdout,main());
+                    }
+}
+
+                }
+            }
     }
 
 }
