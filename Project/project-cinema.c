@@ -44,7 +44,6 @@ void search()
 
             printf(" %-15s \t%5d  \n",Title[i].title,Title[i].yearMovie);
             continue;
-            //printf("[%d]",i+1);
         }
 
         count++;
@@ -90,11 +89,9 @@ int showtime()
     char y;
     system("cls");
     printf("[Search Movie from ShowTime]\n");
-
     printf("===============================\n");
     printf("Movie ShowTime (Today)\n");
     printf("===============================\n");
-
     printf("Please input Movie's Time for searching: ");
     scanf("%f",&x);
     if(x == 11.00)
@@ -102,8 +99,9 @@ int showtime()
         printf("[MESSAGE]: There is no movie showing before %.2f  in the system.\n",x);
         printf("Search By Time Again?(Y/N) :");
         scanf("%s",&y);
-        if(y=='Y'||y=='Y')
+        if(y=='y'||y=='Y')
         {
+            system("cls");
             showtime();
         }
         if (y=='N'||y=='n') {
@@ -113,12 +111,10 @@ int showtime()
         {
             main();
         }
-
-
     }
     else {
         printf("[MESSAGE]: There is no movie showing before %.2f  in the system.\n",x);
-    }
+        }
     }
 }
 int main()
@@ -159,7 +155,6 @@ default :
         break;
     }
 }
-
 }
 
 
