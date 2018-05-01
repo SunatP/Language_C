@@ -1,4 +1,4 @@
-#include <stdio.h>
+﻿#include <stdio.h>
 #include <windows.h>
 #include <string.h>
 
@@ -53,8 +53,8 @@ void search()
     int asd,enter;
     char y,q;
     printf("What movie do you want to watch? ");
-    scanf("%d",&asd); // �Ѻ����繵���Ţ
-        printf("Select ''%s'' (Y/N)?",Title[asd-1].title); // ���͡˹ѧ
+    scanf("%d",&asd); // รับค่าเป็นตัวเลข
+        printf("Select ''%s'' (Y/N)?",Title[asd-1].title); // เลือกหนัง
         scanf("%s",&y);
         if(y=='Y'||y =='y'){
             printf("[%s]\n",Title[asd].title);
@@ -73,7 +73,7 @@ void search()
                         while(1)
                             {
                                 enter = fgetc(stdin);
-                    if(enter == 0x0A) // ������ Enter ���ͨ���÷ӧҹ
+                    if(enter == 0x0A) // กดปุ่ม Enter เพื่อจบการทำงาน
                     {
                         system("cls");
                     fprintf(stdout,main());
