@@ -60,8 +60,9 @@ void search()
         printf("Select %s (Y/N)?",Title[asd-1].title);
         scanf("%s",&y);
         if(y=='Y'||y =='y'){
-            printf("[%s]",Title[asd].title);
-
+            printf("[%s]\n",Title[asd].title);
+            printf("Title: %s\n",Title[asd].title);
+            printf("Year: %d", Title[asd].yearMovie);
         }
         if(y=='n' || y=='N')
             {
