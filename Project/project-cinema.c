@@ -54,7 +54,7 @@ void search()
     char y,q;
     printf("What movie do you want to watch? ");
     scanf("%d",&asd); // รับค่าเป็นตัวเลข
-        printf("Select ''%s'' (Y/N)?",Title[asd-1].title); // เลือกหนัง
+        printf("Select %s (Y/N)?",Title[asd-1].title); // เลือกหนัง
         scanf("%s",&y);
         if(y=='Y'||y =='y'){
             printf("[%s]\n",Title[asd].title);
@@ -78,23 +78,10 @@ void search()
                         system("cls");
                     fprintf(stdout,main());
                     }
-}
-
+                  }
                 }
             }
     }
-
-void watchag()
-{
-    char asd;
-    char b = "y";
-    char c = "Y";
-    //system("cls");
-
-
-
-
-}
 
 int showtime()
 {
