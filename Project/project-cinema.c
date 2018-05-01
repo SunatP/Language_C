@@ -53,11 +53,8 @@ void search()
     int asd,enter;
     char y,q;
     printf("What movie do you want to watch? ");
-    scanf("%d",&asd);
-
-    if(asd != count )
-    {
-        printf("Select %s (Y/N)?",Title[asd-1].title);
+    scanf("%d",&asd); // รับค่าเป็นตัวเลข
+        printf("Select ''%s'' (Y/N)?",Title[asd-1].title); // เลือกหนัง
         scanf("%s",&y);
         if(y=='Y'||y =='y'){
             printf("[%s]\n",Title[asd].title);
@@ -76,7 +73,7 @@ void search()
                         while(1)
                             {
                                 enter = fgetc(stdin);
-                    if(enter == 0x0A)
+                    if(enter == 0x0A) // กดปุ่ม Enter เพื่อจบการทำงาน
                     {
                         system("cls");
                     fprintf(stdout,main());
@@ -87,7 +84,6 @@ void search()
             }
     }
 
-}
 void watchag()
 {
     char asd;
@@ -136,9 +132,6 @@ int showtime()
     else {
         printf("[MESSAGE]: There is no movie showing before %.2f  in the system.\n",x);
     }
-    //printf("What movie do you want to watch?");
-
-    //printf("[The ICT Re-Exam Game");
     }
 }
 int main()
@@ -159,7 +152,6 @@ case '1':
     {
         system("cls");
         search();
-        //watchag();
         break;
     }
 case '2':
