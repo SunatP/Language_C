@@ -5,7 +5,7 @@
 #include<time.h>
     struct Movie
 {
-    char title[30];
+    char title[50];
     int yearMovie;
     float hr;
     float min;
@@ -15,7 +15,7 @@
 struct Movie Title[100] ={{"The Transporter",2002,1,32,10.00,1},//15
     {"Transpoter2", 2005,1,27,13.00,1},//11
     {"Transformers", 2007,2,24,10.00,2},//12
-    {"Transformers : The Last Knight", 2017,2,34,13.00,2},//30
+    {"The ICT Re-Exam Game", 2018,1,0,11.00,2},//30
     {"Lost in Translation", 2003,1,42,11.00,3},//19
     {"Ready player one", 2018,1,15,14.00,1},//16
     {"Jumanji", 2018,1,32,15.00,1},//7
@@ -36,6 +36,7 @@ void search()
     printf("Please input Title for searching : ");
 
     scanf("%s",&ti);
+
     printf("=================================================================================================================\n");
     printf("      Title                              Year            Length         ShowTime      Screen\n");
     printf("=================================================================================================================\n");
@@ -48,9 +49,8 @@ void search()
             printf("[%d]",i+1);
 
             printf(" %-35s\t%5d  \t\t%.0fh %.0fmin \t%.2f \t\t%d\n",Title[i].title,Title[i].yearMovie,Title[i].hr,Title[i].min,Title[i].stime,Title[i].screen);
-            continue;
-        }
 
+        }
         count++;
     }
    printf("=================================================================================================================\n");
@@ -101,7 +101,7 @@ int seat()
 {
     int i,j,k;
     int xx;
-    xx= "X";
+    char r,c;
     float x;
     char y;
     char board[4][10] = {
@@ -148,11 +148,12 @@ int seat()
         }
         printf("|");
     }
-    do{
+
           printf("\nHow many tickets do you want to buy? ");
           scanf("%d", &k);
           printf("\n");
-          
+          printf("Which Seat do you want to sit? ");
+
 }
 
 
@@ -164,6 +165,7 @@ int seat()
 int showtime()
 {
     int i;
+    i=0;
     float x;
     char y;
     system("cls");
@@ -175,27 +177,39 @@ int showtime()
     scanf("%f",&x);
     if(x == 11.00)
     {
+        printf("%s %d %.0fh%.0fmin   %.2f\n",Title[i+3].title,Title[i+3].yearMovie,Title[i+3].hr,Title[i+3].min,Title[i+3].stime);
+        printf("%s %d %.0fh%.0fmin   %.2f",Title[i+4].title,Title[i+4].yearMovie,Title[i+4].hr,Title[i+4].min,Title[i+4].stime);
+    }
+    if(x == 9.00)
+    {
         printf("[MESSAGE]: There is no movie showing before %.2f  in the system.\n",x);
-        printf("Search By Time Again?(Y/N) :");
+        printf("Search Again? (Y/N) ");
         scanf("%s",&y);
-        if(y=='y'||y=='Y')
+        if(y == 'y' || y == 'Y')
         {
+            Sleep(1500);
             system("cls");
             showtime();
+
         }
-        if (y=='N'||y=='n') {
-            printf("Go to Main Menu? (Y/N)");
-            scanf("%s",&y);
-            if(y="Y")
-        {
+        else {
+                printf("Program will go Main Menu");
+             Sleep(2000);
+            system("cls");
             main();
         }
+
     }
-    else {
-        printf("[MESSAGE]: There is no movie showing before %.2f  in the system.\n",x);
-        }
+    if(x == 10.00)
+    {
+        printf("%s %d %.0fh%.0fmin  %.2f\n",Title[i].title,Title[i].yearMovie,Title[i].hr,Title[i].min,Title[i].stime);
+        printf("%s %d %.0fh%.0fmin  %.2f",Title[i+2].title,Title[i+2].yearMovie,Title[i+2].hr,Title[i+2].min,Title[i].stime);
+
+
     }
-}
+
+    }
+
 int main()
 {
 char input;
