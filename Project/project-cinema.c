@@ -79,7 +79,7 @@ void search()
                  scanf("%s",&q);
                 if(q=='Y'||q =='y')
                 {
-
+                 system("cls");
                  search();
                 }
                 else {
