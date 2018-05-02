@@ -67,7 +67,7 @@ void search()
             printf("Time: %.2f - %.2f\n",  Title[asd-1].stime,(Title[asd-1].stime+Title[asd-1].hr+(Title[asd-1].min/100)));
             printf("Screen: %d\n",Title[asd-1].screen);
 
-        printf("Select %s (Yes/No):? ",Title[asd-1].title); // เลือกหนัง
+        printf("Select %s (Y/N):? ",Title[asd-1].title); // เลือกหนัง
         scanf("%s",&y);
         if(y=='Y'||y =='y'){
             Sleep(1500);
@@ -101,7 +101,7 @@ int seat()
 {
     int seatt[4][10];
     char row[4]={'A','B','C','D'};
-    int i,j,tic;
+    int i,j,rc,g;
     char go;
     printf("===============================\n");
     printf("Available Seat\n");
@@ -116,8 +116,8 @@ int seat()
         }
         printf("\n");
     }
-    printf("How many tickets do you want to buy? ");
-    scanf("%d",&tic);
+    printf("How many Tickets do you want to buy? ");
+    scanf("%d",&rc);
     printf("Which Seat do you want to sit?\n");
 
     int k[4];
@@ -131,7 +131,7 @@ int seat()
         }
     }
 
-    for(i=0;i<tic;i++)
+    for(i=0;i<rc;i++)
     {
         if(i!=0)
         {
@@ -141,14 +141,10 @@ int seat()
         scanf("%d %d",&k[i],&l[i]);
         seatt[k[i]-1][l[i]-1] = 1;
     }
-
-    for(i=0;i<tic;i++)
+    for(i=0;i<rc;i++)
     {
     printf("\nYou are now have booked the seat number %d,%d at Row %c\n",k[i],l[i],row[k[i]-1]);
     }
-
-
-
     for(i=0;i<4;i++)
     {
         printf("Row %c |" ,row[i]);
@@ -162,54 +158,150 @@ int seat()
             {
                 printf("X|");
             }
-
         }
         printf("\n");
     }
 
-    for(i=0;i<tic;i++)
+    for(i=0;i<rc;i++)
     {
         printf("\n");
         printf("[Ticket]\n");
         printf("-------------------------------------\n");
         printf("SEAT No. %d,%d Row %c",k[i],l[i],row[k[i]-1]);
         printf("\n-------------------------------------\n");
-        printf("\n [%s]\n",Title[g].title);
-        printf("Title: %s\n",Title[g].title);
-        printf("Year: %s\n",Title[g].yearMovie);
-        printf("Duration: %s\n",Title[g].hr,Title[g].min);
-        printf("Time: %s-%s\n",Title[g].time,movie[g].show);
-        printf("Screen: %s\n",Title[g].screen);
+        printf("\n [%s]\n",Title[i].title);
+        printf("Title: %s\n",Title[i].title);
+        printf("Year: %d\n",Title[i].yearMovie);
+        printf("Duration: %.0fh %.0fmin\n",Title[i].hr,Title[i].min);
+        printf("Time: %.2f - %.2f\n",Title[i].hr,Title[i].min);
+        printf("Screen: %d\n",Title[i].screen);
         printf("-------------------------------------\n");
 
     }
-        printf("Do you want to continue booking?");
-        RERE :
-        scanf("%c",&go);
-        if(tolower(go) == 'y')
+        printf("Do you want to continue booking ? (Y/N):");
+        gobook :
+        scanf("%s",&go);
+        if(go == 'Y' ||go =='y')
         {
-
-            printf("d");
+            printf("Program will go To Search Again");
+            Sleep(2000);
+            system("cls");
+           search();
 
         }
-        else if(tolower(go) == 'n')
+        else if(go == 'N' ||go =='n')
         {
+            Sleep(1500);
+            printf("Program will go To Main Menu");
+            system("cls");
+            main();
+        }
 
-            printf("d");
-        }
-        else
-        {
-            printf("Please select answer again! <Y/N>:");
-            goto RERE ;
-        }
 
 }
 
+int seat2()
+{
+    int seatt[4][10];
+    char row[4]={'A','B','C','D'};
+    int i,j,rc,g;
+    char go;
+    printf("===============================\n");
+    printf("Available Seat\n");
+    printf("===============================\n");
+
+    for(i=0;i<4;i++)
+    {
+        printf("Row %c |" ,row[i]);
+        for(j=0;j<10;j++)
+        {
+            printf("O|");
+        }
+        printf("\n");
+    }
+    printf("How many Tickets do you want to buy? ");
+    scanf("%d",&rc);
+    printf("Which Seat do you want to sit?\n");
+
+    int k[4];
+    int l[10];
+
+    for(i=0;i<4;i++)
+    {
+        for(j=0;j<10;j++)
+        {
+            seatt[i][j] = 0;
+        }
+    }
+
+    for(i=0;i<rc;i++)
+    {
+        if(i!=0)
+        {
+            printf("\nInput next: ");
+        }
+
+        scanf("%d %d",&k[i],&l[i]);
+        seatt[k[i]-1][l[i]-1] = 1;
+    }
+    for(i=0;i<rc;i++)
+    {
+    printf("\nYou are now have booked the seat number %d,%d at Row %c\n",k[i],l[i],row[k[i]-1]);
+    }
+    for(i=0;i<4;i++)
+    {
+        printf("Row %c |" ,row[i]);
+        for(j=0;j<10;j++)
+        {
+            if(seatt[i][j] == 0)
+            {
+                printf("O|");
+            }
+            else
+            {
+                printf("X|");
+            }
+        }
+        printf("\n");
+    }
+
+    for(i=0;i<rc;i++)
+    {
+        printf("\n");
+        printf("[Ticket]\n");
+        printf("-------------------------------------\n");
+        printf("SEAT No. %d,%d Row %c",k[i],l[i],row[k[i]-1]);
+        printf("\n-------------------------------------\n");
+        printf("\n [%s]\n",Title[i].title);
+        printf("Title: %s\n",Title[i].title);
+        printf("Year: %d\n",Title[i].yearMovie);
+        printf("Duration: %.0fh %.0fmin\n",Title[i].hr,Title[i].min);
+        printf("Time: %.2f - %.2f\n",Title[i].hr,Title[i].min);
+        printf("Screen: %d\n",Title[i].screen);
+        printf("-------------------------------------\n");
+
+    }
+        printf("Do you want to continue booking ? (Y/N):");
+        gobook :
+        scanf("%s",&go);
+        if(go == 'Y' ||go =='y')
+        {
+            printf("Program will go To Search Again");
+            Sleep(2000);
+            system("cls");
+           showtime();
+
+        }
+        else if(go == 'N' ||go =='n')
+        {
+            Sleep(1500);
+            printf("Program will go To Main Menu");
+            system("cls");
+            main();
+        }
 
 
-
-
-
+}
 
 int showtime()
 {
@@ -224,19 +316,31 @@ int showtime()
     printf("===============================\n");
     printf("Please input Movie's Time for searching: ");
     scanf("%f",&x);
-    if(x == 11.00)
+    if(x == 11.00) // 2 Movie
     {
-        printf("%s %d %.0fh%.0fmin   %.2f\n",Title[i+3].title,Title[i+3].yearMovie,Title[i+3].hr,Title[i+3].min,Title[i+3].stime);
-        printf("%s %d %.0fh%.0fmin   %.2f",Title[i+4].title,Title[i+4].yearMovie,Title[i+4].hr,Title[i+4].min,Title[i+4].stime);
+        printf("[Available] %s %d %.0fh%.0fmin   %.2f\n",Title[i+3].title,Title[i+3].yearMovie,Title[i+3].hr,Title[i+3].min,Title[i+3].stime);
+        printf("[Available] %s %d %.0fh%.0fmin   %.2f\n",Title[i+4].title,Title[i+4].yearMovie,Title[i+4].hr,Title[i+4].min,Title[i+4].stime);
+        printf("Select Movie to Watch?(Y/N): ");
+        scanf("%s",&y);
+        if(y == 'Y'|| y=='y')
+        {
+            seat2();
+        }
+        else{
+             printf("Program will go to search Movie by Time Again");
+             Sleep(2000);
+            system("cls");
+            showtime();
+        }
     }
-    if(x == 9.00)
+    if(x == 7.00 || x== 06.00 ||x== 8.00||x == 9.00 || x== 12.00 || x == 18.00 || x == 19.00 || x == 20.00 || x == 21.00 || x == 22.00 || x == 23.00 || x == 24.00 )
     {
-        printf("[MESSAGE]: There is no movie showing before %.2f  in the system.\n",x);
+        printf("[MESSAGE]: There is no movie showing before %.2f in the system.\n",x);
         printf("Search Again? (Y/N) ");
         scanf("%s",&y);
         if(y == 'y' || y == 'Y')
         {
-            Sleep(1500);
+            Sleep(2000);
             system("cls");
             showtime();
 
@@ -249,14 +353,104 @@ int showtime()
         }
 
     }
-    if(x == 10.00)
+    if(x == 10.00) // 2 Movie
     {
-        printf("%s %d %.0fh%.0fmin  %.2f\n",Title[i].title,Title[i].yearMovie,Title[i].hr,Title[i].min,Title[i].stime);
-        printf("%s %d %.0fh%.0fmin  %.2f",Title[i+2].title,Title[i+2].yearMovie,Title[i+2].hr,Title[i+2].min,Title[i].stime);
-
-
+        printf("[Available] %s %d %.0fh%.0fmin  %.2f\n",Title[i].title,Title[i].yearMovie,Title[i].hr,Title[i].min,Title[i].stime);
+        printf("[Available] %s %d %.0fh%.0fmin  %.2f\n",Title[i+2].title,Title[i+2].yearMovie,Title[i+2].hr,Title[i+2].min,Title[i].stime);
+        printf("Select Movie to Watch?(Y/N): ");
+        scanf("%s",&y);
+        if(y == 'Y'|| y=='y')
+        {
+           seat2();
+        }
+        else{
+             printf("Program will go to search Movie by Time Again");
+             Sleep(2000);
+            system("cls");
+            showtime();
+        }
     }
-
+     if(x == 13.00) // 2 Movie
+    {
+        printf("[Available] %s %d %.0fh%.0fmin  %.2f\n",Title[i+1].title,Title[i+1].yearMovie,Title[i+1].hr,Title[i+1].min,Title[i+1].stime);
+        printf("[Available] %s %d %.0fh%.0fmin  %.2f\n",Title[i+8].title,Title[i+8].yearMovie,Title[i+8].hr,Title[i+8].min,Title[i+8].stime);
+        printf("Select Movie to Watch?(Y/N): ");
+        scanf("%s",&y);
+        if(y == 'Y'|| y=='y')
+        {
+            seat2();
+        }
+        else{
+             printf("Program will go to search Movie by Time Again");
+             Sleep(2000);
+            system("cls");
+            showtime();
+        }
+    }
+if(x == 15.00) // 1 Movie
+    {
+        printf("[Available] %s %d %.0fh%.0fmin  %.2f\n",Title[i+6].title,Title[i+6].yearMovie,Title[i+6].hr,Title[i+6].min,Title[i+6].stime);
+        printf("Select Movie to Watch?(Y/N): ");
+        scanf("%s",&y);
+        if(y == 'Y'|| y=='y')
+        {
+            seat();
+        }
+        else{
+             printf("Program will go to search Movie by Time Again");
+             Sleep(2000);
+            system("cls");
+            showtime();
+        }
+    }
+    if(x == 16.00) // 1 Movie
+    {
+        printf("[Available] %s %d %.0fh%.0fmin  %.2f\n",Title[i+7].title,Title[i+7].yearMovie,Title[i+7].hr,Title[i+7].min,Title[i+7].stime);
+        printf("Select Movie to Watch?(Y/N): ");
+        scanf("%s",&y);
+        if(y == 'Y'|| y=='y')
+        {
+            seat();
+        }
+        else{
+             printf("Program will go to search Movie by Time Again");
+             Sleep(2000);
+            system("cls");
+            showtime();
+        }
+    }
+    if(x == 17.00) // 1 Movie
+    {
+        printf("[Available] %s %d %.0fh%.0fmin  %.2f\n",Title[i+9].title,Title[i+9].yearMovie,Title[i+9].hr,Title[i+9].min,Title[i+9].stime);
+        printf("Select Movie to Watch?(Y/N): ");
+        scanf("%s",&y);
+        if(y == 'Y'|| y=='y')
+        {
+            seat();
+        }
+        else{
+             printf("Program will go to search Movie by Time Again");
+             Sleep(2000);
+            system("cls");
+            showtime();
+        }
+    }
+     if(x == 14.00) // 1 Movie
+    {
+        printf("[Available] %s %d %.0fh%.0fmin  %.2f\n",Title[i+5].title,Title[i+5].yearMovie,Title[i+5].hr,Title[i+5].min,Title[i+5].stime);
+        printf("Select Movie to Watch?(Y/N): ");
+        scanf("%s",&y);
+        if(y == 'Y'|| y=='y')
+        {
+            seat();
+        }
+        else{
+             printf("Program will go to search Movie by Time Again");
+             Sleep(2000);
+            system("cls");
+            showtime();
+        }
+    }
     }
 
 int main()
