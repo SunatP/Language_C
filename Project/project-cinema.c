@@ -1,4 +1,4 @@
-﻿#include <stdio.h>
+#include <stdio.h>
 #include <windows.h>
 #include <string.h>
 
@@ -51,9 +51,9 @@ void search()
    printf("=================================================================================\n");
     int asd,enter;
     char y,q;
-    printf("What movie do you want to watch? ");
+    printf("What movie do you want to watch?: ");
     scanf("%d",&asd); // รับค่าเป็นตัวเลข
-        printf("Select %s (Y/N)?",Title[asd-1].title); // เลือกหนัง
+        printf("Select %s (Yes/No):? ",Title[asd-1].title); // เลือกหนัง
         scanf("%s",&y);
         if(y=='Y'||y =='y'){
             printf("[%s]\n",Title[asd].title);
@@ -62,10 +62,11 @@ void search()
         }
         if(y=='n' || y=='N')
             {
-                printf("Return To Search And Select Again if press N program will go Main Menu? (Y/N):");
+                printf("Return To Search And Select Again if press N program will go Main Menu? (Y/N): ");
                  scanf("%s",&q);
-                if(y=='Y'||y =='y')
+                if(q=='Y'||q =='y')
                 {
+                 system("cls");
                  search();
                 }
                 else {
@@ -156,12 +157,3 @@ default :
     }
 }
 }
-
-
-
-
-
-
-
-
-
