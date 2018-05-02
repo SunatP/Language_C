@@ -99,60 +99,109 @@ void search()
     }
 int seat()
 {
-    int i,j,k;
-    int xx;
-    char r,c;
-    float x;
-    char y;
-    char board[4][10] = {
-         {'O','O','O','O','O','O','O','O','O','O'},
-         {'O','X','O','O','O','X','O','O','O','O'},
-         {'O','O','O','O','O','O','O','X','X','O'},
-         {'O','O','O','O','X','X','O','O','O','O'}};
+    int seatt[4][10];
+    char row[4]={'A','B','C','D'};
+    int i,j,tic;
+    char go;
     printf("===============================\n");
     printf("Available Seat\n");
     printf("===============================\n");
-    printf("Row a: ");
-    for( i = 0; i<1; i++)
+
+    for(i=0;i<4;i++)
     {
+        printf("Row %c |" ,row[i]);
         for(j=0;j<10;j++)
         {
-            printf("|%c",board[i][j]);
+            printf("O|");
         }
-        printf("|");
+        printf("\n");
     }
-    printf("\nRow b: ");
-    for( i = 1; i<2; i++)
+    printf("How many tickets do you want to buy? ");
+    scanf("%d",&tic);
+    printf("Which Seat do you want to sit?\n");
+
+    int k[4];
+    int l[10];
+
+    for(i=0;i<4;i++)
     {
         for(j=0;j<10;j++)
         {
-            printf("|%c",board[i][j]);
+            seatt[i][j] = 0;
         }
-        printf("|");
-    }
-    printf("\nRow c: ");
-    for( i = 2; i<3; i++)
-    {
-        for(j=0;j<10;j++)
-        {
-            printf("|%c",board[i][j]);
-        }
-        printf("|");
-    }
-     printf("\nRow d: ");
-    for( i = 3; i<4; i++)
-    {
-        for(j=0;j<10;j++)
-        {
-            printf("|%c",board[i][j]);
-        }
-        printf("|");
     }
 
-          printf("\nHow many tickets do you want to buy? ");
-          scanf("%d", &k);
-          printf("\n");
-          printf("Which Seat do you want to sit? ");
+    for(i=0;i<tic;i++)
+    {
+        if(i!=0)
+        {
+            printf("\nInput next: ");
+        }
+
+        scanf("%d %d",&k[i],&l[i]);
+        seatt[k[i]-1][l[i]-1] = 1;
+    }
+
+    for(i=0;i<tic;i++)
+    {
+    printf("\nYou are now have booked the seat number %d,%d at Row %c\n",k[i],l[i],row[k[i]-1]);
+    }
+
+
+
+    for(i=0;i<4;i++)
+    {
+        printf("Row %c |" ,row[i]);
+        for(j=0;j<10;j++)
+        {
+            if(seatt[i][j] == 0)
+            {
+                printf("O|");
+            }
+            else
+            {
+                printf("X|");
+            }
+
+        }
+        printf("\n");
+    }
+
+    for(i=0;i<tic;i++)
+    {
+        printf("\n");
+        printf("[Ticket]\n");
+        printf("-------------------------------------\n");
+        printf("SEAT No. %d,%d Row %c",k[i],l[i],row[k[i]-1]);
+        printf("\n-------------------------------------\n");
+        printf("\n [%s]\n",Title[g].title);
+        printf("Title: %s\n",Title[g].title);
+        printf("Year: %s\n",Title[g].yearMovie);
+        printf("Duration: %s\n",Title[g].hr,Title[g].min);
+        printf("Time: %s-%s\n",Title[g].time,movie[g].show);
+        printf("Screen: %s\n",Title[g].screen);
+        printf("-------------------------------------\n");
+
+    }
+        printf("Do you want to continue booking?");
+        RERE :
+        scanf("%c",&go);
+        if(tolower(go) == 'y')
+        {
+
+            printf("d");
+
+        }
+        else if(tolower(go) == 'n')
+        {
+
+            printf("d");
+        }
+        else
+        {
+            printf("Please select answer again! <Y/N>:");
+            goto RERE ;
+        }
 
 }
 
